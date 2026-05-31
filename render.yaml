@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: physical-activity-log-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: DATABASE_URL
+        value: ''
+      - key: DATABASE_USERNAME
+        value: ''
+      - key: DATABASE_PASSWORD
+        value: ''

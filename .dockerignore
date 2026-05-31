@@ -1,0 +1,47 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Maven / Java build
+target/
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Logs y temporales
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+
+# Tests y documentación (no necesarios en la imagen)
+src/test/
+README.md
+*.md
+
+# Docker (evita invalidar contexto innecesariamente)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Postman / herramientas locales
+postman/
+.postman/
+
+# Sistema
+.DS_Store
+Thumbs.db
