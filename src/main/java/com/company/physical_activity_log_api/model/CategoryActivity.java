@@ -1,13 +1,10 @@
-package com.example.physical_activity_log_api.model;
-
-import java.time.LocalDateTime;
+package com.company.physical_activity_log_api.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,12 +12,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")
+@Table(name = "categories_activity")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class CategoryActivity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,20 +26,7 @@ public class User {
 	@Column(nullable = false)
 	private String name;
 
-	@Column(nullable = false)
-	private String email;
-
-	@Column(name = "password_hash", nullable = false)
-	private String passwordHash;
-
-	@Column(name = "created_at", nullable = false)
-	private LocalDateTime createdAt;
-
-	@PrePersist
-	void onCreate() {
-		if (createdAt == null) {
-			createdAt = LocalDateTime.now();
-		}
-	}
+	@Column(columnDefinition = "TEXT")
+	private String description;
 
 }

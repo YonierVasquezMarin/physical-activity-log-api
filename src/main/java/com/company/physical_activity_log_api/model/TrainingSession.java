@@ -1,4 +1,6 @@
-package com.example.physical_activity_log_api.model;
+package com.company.physical_activity_log_api.model;
+
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,25 +17,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "activities")
+@Table(name = "training_sessions")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Activity {
+public class TrainingSession {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "category_id", nullable = false)
-	private CategoryActivity category;
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
-	@Column(nullable = false)
-	private String name;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "activity_id", nullable = false)
+	private Activity activity;
 
-	@Column(nullable = false)
-	private String description;
+	@Column(name = "date", nullable = false)
+	private LocalDateTime date;
+
+	@Column(columnDefinition = "TEXT")
+	private String observations;
 
 }

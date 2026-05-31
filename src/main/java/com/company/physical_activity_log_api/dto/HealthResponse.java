@@ -1,4 +1,4 @@
-package com.example.physical_activity_log_api.dto;
+package com.company.physical_activity_log_api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

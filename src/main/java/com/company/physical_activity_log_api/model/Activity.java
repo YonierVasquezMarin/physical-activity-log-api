@@ -1,4 +1,4 @@
-package com.example.physical_activity_log_api.model;
+package com.company.physical_activity_log_api.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,26 +15,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "goal_progress")
+@Table(name = "activities")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GoalProgress {
+public class Activity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "goal_id", nullable = false)
-	private Goal goal;
-
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "session_id", nullable = false)
-	private TrainingSession session;
+	@JoinColumn(name = "category_id", nullable = false)
+	private CategoryActivity category;
 
 	@Column(nullable = false)
-	private Integer level;
+	private String name;
+
+	@Column(nullable = false)
+	private String description;
 
 }

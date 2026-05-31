@@ -1,4 +1,4 @@
-package com.example.physical_activity_log_api.model;
+package com.company.physical_activity_log_api.model;
 
 import java.time.LocalDateTime;
 
@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "training_sessions")
+@Table(name = "goals")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingSession {
+public class Goal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,14 +32,16 @@ public class TrainingSession {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "activity_id", nullable = false)
-	private Activity activity;
+	@Column(nullable = false)
+	private String title;
 
-	@Column(name = "date", nullable = false)
-	private LocalDateTime date;
+	@Column(nullable = false)
+	private String description;
 
-	@Column(columnDefinition = "TEXT")
-	private String observations;
+	@Column(name = "start_date", nullable = false)
+	private LocalDateTime startDate;
+
+	@Column(name = "end_date", nullable = false)
+	private LocalDateTime endDate;
 
 }
