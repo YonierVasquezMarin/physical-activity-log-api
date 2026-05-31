@@ -1,6 +1,6 @@
 package com.company.physical_activity_log_api.dto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +15,6 @@ public class RegisterResponse {
 
 	private String email;
 
-	private LocalDateTime createdAt;
+	private OffsetDateTime createdAt;
 
 }

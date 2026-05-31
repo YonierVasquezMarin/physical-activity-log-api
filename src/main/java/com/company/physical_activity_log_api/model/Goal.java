@@ -1,6 +1,6 @@
 package com.company.physical_activity_log_api.model;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,9 +39,9 @@ public class Goal {
 	private String description;
 
 	@Column(name = "start_date", nullable = false)
-	private LocalDateTime startDate;
+	private OffsetDateTime startDate;
 
 	@Column(name = "end_date", nullable = false)
-	private LocalDateTime endDate;
+	private OffsetDateTime endDate;
 
 }

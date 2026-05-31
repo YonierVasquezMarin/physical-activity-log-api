@@ -1,6 +1,6 @@
 package com.company.physical_activity_log_api.model;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,7 +37,7 @@ public class TrainingSession {
 	private Activity activity;
 
 	@Column(name = "date", nullable = false)
-	private LocalDateTime date;
+	private OffsetDateTime date;
 
 	@Column(columnDefinition = "TEXT")
 	private String observations;

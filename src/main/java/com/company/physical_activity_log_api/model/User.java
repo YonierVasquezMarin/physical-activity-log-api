@@ -1,6 +1,7 @@
 package com.company.physical_activity_log_api.model;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,12 +37,12 @@ public class User {
 	private String passwordHash;
 
 	@Column(name = "created_at", nullable = false)
-	private LocalDateTime createdAt;
+	private OffsetDateTime createdAt;
 
 	@PrePersist
 	void onCreate() {
 		if (createdAt == null) {
-			createdAt = LocalDateTime.now();
+			createdAt = OffsetDateTime.now(ZoneOffset.UTC);
 		}
 	}
 
