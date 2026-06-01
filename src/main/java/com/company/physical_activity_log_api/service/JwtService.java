@@ -11,6 +11,7 @@ import com.company.physical_activity_log_api.config.JwtProperties;
 import com.company.physical_activity_log_api.model.User;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 
@@ -31,6 +32,16 @@ public class JwtService {
 				.expiration(expiration)
 				.signWith(getSigningKey())
 				.compact();
+	}
+
+	public int parseUserId(String token) throws JwtException, IllegalArgumentException {
+		String subject = Jwts.parser()
+				.verifyWith(getSigningKey())
+				.build()
+				.parseSignedClaims(token)
+				.getPayload()
+				.getSubject();
+		return Integer.parseInt(subject);
 	}
 
 	public long getExpirationMs() {
