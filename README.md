@@ -100,6 +100,18 @@ La API lee la cadena de conexión desde variables de entorno del sistema (ámbit
 
 ---
 
+## 🔐 Variables de entorno para JWT
+
+Para el manejo y cifrado de tokens JWT, es necesario definir las siguientes variables de entorno (ámbito **Usuario** en Windows):
+
+| Variable               | Descripción                               | Ejemplo                        |
+|------------------------|-------------------------------------------|--------------------------------|
+| `JWT_SECRET`           | Clave secreta para firmar el token JWT (32 caracteres)    | `TuSecretoSuperSeguro123!`     |
+| `JWT_EXPIRATION_MS`    | Tiempo de expiración del token en milisegundos | `3600000` (1 hora)         |
+
+Asegúrate de registrar estas variables en el sistema antes de ejecutar la API para garantizar la correcta generación y validación de tokens.
+
+
 # ▶️ Ejecución
 
 ## Desde VS Code (Spring Boot Extension Pack)
