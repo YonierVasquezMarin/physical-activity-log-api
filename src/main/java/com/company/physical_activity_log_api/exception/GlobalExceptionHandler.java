@@ -17,6 +17,11 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message", ex.getMessage()));
 	}
 
+	@ExceptionHandler(InvalidCredentialsException.class)
+	public ResponseEntity<Map<String, String>> handleInvalidCredentials(InvalidCredentialsException ex) {
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", ex.getMessage()));
+	}
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
 		String message = ex.getBindingResult().getFieldErrors().stream()

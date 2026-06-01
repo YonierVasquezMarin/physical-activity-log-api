@@ -1,5 +1,7 @@
 package com.company.physical_activity_log_api.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.company.physical_activity_log_api.model.User;
@@ -7,5 +9,7 @@ import com.company.physical_activity_log_api.model.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
 	boolean existsByEmail(String email);
+
+	Optional<User> findByEmail(String email);
 
 }
