@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.company.physical_activity_log_api.dto.ActivityResponse;
 import com.company.physical_activity_log_api.exception.ResourceNotFoundException;
 import com.company.physical_activity_log_api.model.Activity;
+import com.company.physical_activity_log_api.model.User;
 import com.company.physical_activity_log_api.repository.ActivityRepository;
 import com.company.physical_activity_log_api.repository.CategoryActivityRepository;
 
@@ -28,8 +29,8 @@ public class ActivityService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<ActivityResponse> listByCategory(Integer categoryId) {
-		if (!categoryActivityRepository.existsById(categoryId)) {
+	public List<ActivityResponse> listByCategory(User user, Integer categoryId) {
+		if (categoryActivityRepository.findAccessibleById(categoryId, user.getId()).isEmpty()) {
 			throw new ResourceNotFoundException("Categoría no encontrada");
 		}
 
