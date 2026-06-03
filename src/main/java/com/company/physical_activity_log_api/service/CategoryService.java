@@ -23,7 +23,7 @@ public class CategoryService {
 
 	@Transactional(readOnly = true)
 	public List<CategoryResponse> list(User user) {
-		return categoryActivityRepository.findByUser_IdOrderByNameAsc(user.getId()).stream()
+		return categoryActivityRepository.findAccessibleByUserIdOrderByNameAsc(user.getId()).stream()
 				.map(this::toResponse)
 				.toList();
 	}

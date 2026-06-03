@@ -13,6 +13,11 @@ public interface CategoryActivityRepository extends JpaRepository<CategoryActivi
 
 	List<CategoryActivity> findByUser_IdOrderByNameAsc(Integer userId);
 
+	@Query("SELECT c FROM CategoryActivity c WHERE c.user IS NULL OR c.user.id = :userId ORDER BY c.name ASC")
+	List<CategoryActivity> findAccessibleByUserIdOrderByNameAsc(@Param("userId") Integer userId);
+
+	boolean existsByUserIsNullAndName(String name);
+
 	Optional<CategoryActivity> findByIdAndUser_Id(Integer id, Integer userId);
 
 	boolean existsByIdAndUser_Id(Integer id, Integer userId);
