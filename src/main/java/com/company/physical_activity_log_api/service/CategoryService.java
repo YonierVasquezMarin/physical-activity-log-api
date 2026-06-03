@@ -23,7 +23,7 @@ public class CategoryService {
 
 	@Transactional(readOnly = true)
 	public List<CategoryResponse> list(User user) {
-		return categoryActivityRepository.findByUserIsNullOrUser_IdOrderByNameAsc(user.getId()).stream()
+		return categoryActivityRepository.findByUser_IdOrderByNameAsc(user.getId()).stream()
 				.map(this::toResponse)
 				.toList();
 	}
@@ -66,10 +66,8 @@ public class CategoryService {
 	}
 
 	private CategoryResponse toResponse(CategoryActivity category) {
-		Integer userId = category.getUser() != null ? category.getUser().getId() : null;
 		return new CategoryResponse(
 				category.getId(),
-				userId,
 				category.getName(),
 				category.getDescription());
 	}

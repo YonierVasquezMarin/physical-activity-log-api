@@ -8,7 +8,6 @@ import lombok.Getter;
 public class CategoryResponse {
 
 	private Integer id;
-	private Integer userId;
 	private String name;
 	private String description;
 }

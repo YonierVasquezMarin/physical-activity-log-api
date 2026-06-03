@@ -11,7 +11,7 @@ import com.company.physical_activity_log_api.model.CategoryActivity;
 
 public interface CategoryActivityRepository extends JpaRepository<CategoryActivity, Integer> {
 
-	List<CategoryActivity> findByUserIsNullOrUser_IdOrderByNameAsc(Integer userId);
+	List<CategoryActivity> findByUser_IdOrderByNameAsc(Integer userId);
 
 	Optional<CategoryActivity> findByIdAndUser_Id(Integer id, Integer userId);
 
