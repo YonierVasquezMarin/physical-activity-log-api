@@ -1,11 +1,5 @@
 package com.company.physical_activity_log_api.model;
 
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,36 +7,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "training_sessions")
+@Table(
+		name = "training_session_activities",
+		uniqueConstraints = @UniqueConstraint(columnNames = { "training_session_id", "activity_id" }))
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingSession {
+public class TrainingSessionActivity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+	@JoinColumn(name = "training_session_id", nullable = false)
+	private TrainingSession trainingSession;
 
-	@OneToMany(mappedBy = "trainingSession", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<TrainingSessionActivity> sessionActivities = new ArrayList<>();
-
-	@Column(name = "date", nullable = false)
-	private OffsetDateTime date;
-
-	@Column(columnDefinition = "TEXT")
-	private String observations;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "activity_id", nullable = false)
+	private Activity activity;
 
 }
