@@ -1,5 +1,6 @@
 package com.company.physical_activity_log_api.service;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -65,8 +66,7 @@ public class TrainingSessionService {
 
 		session.setDate(request.getDate());
 		session.setObservations(request.getObservations());
-		session.getSessionActivities().clear();
-		setSessionActivities(session, activities);
+		syncSessionActivities(session, activities);
 
 		return toResponse(session);
 	}
@@ -94,6 +94,33 @@ public class TrainingSessionService {
 			link.setTrainingSession(session);
 			link.setActivity(activity);
 			session.getSessionActivities().add(link);
+		}
+	}
+
+	private void syncSessionActivities(TrainingSession session, List<Activity> activities) {
+		Set<Integer> targetIds = new LinkedHashSet<>();
+		for (Activity activity : activities) {
+			targetIds.add(activity.getId());
+		}
+
+		for (Iterator<TrainingSessionActivity> it = session.getSessionActivities().iterator(); it.hasNext();) {
+			if (!targetIds.contains(it.next().getActivity().getId())) {
+				it.remove();
+			}
+		}
+
+		Set<Integer> existingIds = new LinkedHashSet<>();
+		for (TrainingSessionActivity link : session.getSessionActivities()) {
+			existingIds.add(link.getActivity().getId());
+		}
+
+		for (Activity activity : activities) {
+			if (!existingIds.contains(activity.getId())) {
+				TrainingSessionActivity link = new TrainingSessionActivity();
+				link.setTrainingSession(session);
+				link.setActivity(activity);
+				session.getSessionActivities().add(link);
+			}
 		}
 	}
 
