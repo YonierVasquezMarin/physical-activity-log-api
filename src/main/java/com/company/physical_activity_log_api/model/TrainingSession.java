@@ -41,6 +41,9 @@ public class TrainingSession {
 
 	@Column(name = "date", nullable = false)
 	private OffsetDateTime date;
+	
+	@Column(name = "photo_name")
+	private String photoName;
 
 	@Column(columnDefinition = "TEXT")
 	private String observations;

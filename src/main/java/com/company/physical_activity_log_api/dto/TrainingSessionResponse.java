@@ -17,5 +17,7 @@ public class TrainingSessionResponse {
 	private OffsetDateTime date;
 
 	private String observations;
+
+	private String photoName;
 }
 

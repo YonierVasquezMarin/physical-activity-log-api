@@ -23,5 +23,7 @@ public class TrainingSessionUpdateRequest {
 	private OffsetDateTime date;
 
 	private String observations;
+
+	private String photoName;
 }
 

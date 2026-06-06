@@ -51,6 +51,7 @@ public class TrainingSessionService {
 		session.setUser(user);
 		session.setDate(request.getDate());
 		session.setObservations(request.getObservations());
+		session.setPhotoName(request.getPhotoName());
 		setSessionActivities(session, activities);
 
 		TrainingSession saved = trainingSessionRepository.save(session);
@@ -66,6 +67,7 @@ public class TrainingSessionService {
 
 		session.setDate(request.getDate());
 		session.setObservations(request.getObservations());
+		session.setPhotoName(request.getPhotoName());
 		syncSessionActivities(session, activities);
 
 		return toResponse(session);
@@ -133,7 +135,8 @@ public class TrainingSessionService {
 				session.getId(),
 				activities,
 				session.getDate(),
-				session.getObservations());
+				session.getObservations(),
+				session.getPhotoName());
 	}
 
 	private ActivityResponse toActivityResponse(Activity activity) {
