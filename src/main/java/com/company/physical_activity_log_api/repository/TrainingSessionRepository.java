@@ -1,5 +1,6 @@
 package com.company.physical_activity_log_api.repository;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +34,26 @@ public interface TrainingSessionRepository extends JpaRepository<TrainingSession
 			@Param("userId") Integer userId);
 
 	boolean existsByIdAndUserId(Integer id, Integer userId);
+
+	@Query("""
+			SELECT DISTINCT ts FROM TrainingSession ts
+			JOIN FETCH ts.sessionActivities sa
+			JOIN FETCH sa.activity a
+			JOIN FETCH a.category
+			WHERE ts.user.id = :userId
+			AND ts.date >= :from AND ts.date <= :to
+			ORDER BY ts.date ASC
+			""")
+	List<TrainingSession> findByUserIdAndDateBetweenWithActivities(
+			@Param("userId") Integer userId,
+			@Param("from") OffsetDateTime from,
+			@Param("to") OffsetDateTime to);
+
+	@Query("""
+			SELECT ts.date FROM TrainingSession ts
+			WHERE ts.user.id = :userId
+			ORDER BY ts.date ASC
+			""")
+	List<OffsetDateTime> findDatesByUserId(@Param("userId") Integer userId);
 }
 
