@@ -1,0 +1,435 @@
+{
+  "info": {
+    "_postman_id": "add601f3-e8bc-4d28-80d2-e58773c406d9",
+    "name": "Goals",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26305473"
+  },
+  "item": [
+    {
+      "name": "Get all goals",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{server-url}}/goals",
+          "host": [
+            "{{server-url}}"
+          ],
+          "path": [
+            "goals"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/goals",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "goals"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": 200
+            },
+            {
+              "key": "date",
+              "value": "Mon, 08 Jun 2026 19:47:55 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "content-length",
+              "value": "126"
+            },
+            {
+              "key": "content-encoding",
+              "value": "br"
+            },
+            {
+              "key": "rndr-id",
+              "value": "51613aeb-2c66-4a12"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "cf-ray",
+              "value": "a08a693a8f96e564-BOG"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 2,\n        \"title\": \"Correr 30 km en el mes\",\n        \"description\": \"Acumular 30 km corriendo en junio\",\n        \"startDate\": \"2025-06-01T05:00:00Z\",\n        \"endDate\": \"2025-07-01T04:59:59Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get a goal by id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{server-url}}/goals/2",
+          "host": [
+            "{{server-url}}"
+          ],
+          "path": [
+            "goals",
+            "2"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/goals/2",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "goals",
+                "2"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 03 Jun 2026 01:59:28 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 2,\n    \"title\": \"Correr 30 km en el mes\",\n    \"description\": \"Acumular 30 km corriendo en junio\",\n    \"startDate\": \"2025-06-01T05:00:00Z\",\n    \"endDate\": \"2025-07-01T04:59:59Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Register a goal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Correr 100 km en el mes\",\r\n    \"description\": \"Acumular 100 km corriendo en junio\",\r\n    \"startDate\": \"2025-06-01T00:00:00-05:00\",\r\n    \"endDate\": \"2025-06-30T23:59:59-05:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{server-url}}/goals",
+          "host": [
+            "{{server-url}}"
+          ],
+          "path": [
+            "goals"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Correr 100 km en el mes\",\r\n    \"description\": \"Acumular 100 km corriendo en junio\",\r\n    \"startDate\": \"2025-06-01T00:00:00-05:00\",\r\n    \"endDate\": \"2025-06-30T23:59:59-05:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/goals",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "goals"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 03 Jun 2026 01:23:57 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 2,\n    \"title\": \"Correr 30 km en el mes\",\n    \"description\": \"Acumular 30 km corriendo en junio\",\n    \"startDate\": \"2025-06-01T05:00:00Z\",\n    \"endDate\": \"2025-07-01T04:59:59Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update a goal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Correr 120 km en el mes\",\r\n    \"description\": \"Meta ampliada: 120 km en junio\",\r\n    \"startDate\": \"2025-06-01T00:00:00-05:00\",\r\n    \"endDate\": \"2025-06-30T23:59:59-05:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{server-url}}/goals/1",
+          "host": [
+            "{{server-url}}"
+          ],
+          "path": [
+            "goals",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Correr 120 km en el mes\",\r\n    \"description\": \"Meta ampliada: 120 km en junio\",\r\n    \"startDate\": \"2025-06-01T00:00:00-05:00\",\r\n    \"endDate\": \"2025-06-30T23:59:59-05:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/goals/1",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "goals",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 03 Jun 2026 01:26:01 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"title\": \"Correr 120 km en el mes\",\n    \"description\": \"Meta ampliada: 120 km en junio\",\n    \"startDate\": \"2025-06-01T05:00:00Z\",\n    \"endDate\": \"2025-07-01T04:59:59Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete a goal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{server-url}}/goals/1",
+          "host": [
+            "{{server-url}}"
+          ],
+          "path": [
+            "goals",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/goals/1",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "goals",
+                "1"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 03 Jun 2026 01:26:59 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    }
+  ]
+}

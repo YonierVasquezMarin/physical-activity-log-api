@@ -1,0 +1,73 @@
+{
+  "info": {
+    "_postman_id": "9946947e-0598-4804-86f6-9a8548b6c011",
+    "name": "Health",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26305473"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{server-root-url}}/health",
+          "host": [
+            "{{server-root-url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-root-url}}/health",
+              "host": [
+                "{{server-root-url}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 31 May 2026 23:00:26 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"UP\"\n}"
+        }
+      ]
+    }
+  ]
+}

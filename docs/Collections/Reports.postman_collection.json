@@ -1,0 +1,113 @@
+{
+  "info": {
+    "_postman_id": "980ade33-3e47-46c6-857c-87328e7a09da",
+    "name": "Reports",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26305473"
+  },
+  "item": [
+    {
+      "name": "Get summary",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{server-url}}/reports/summary?from=2026-05-16T00:00:00Z&to=2026-06-15T23:59:59Z&topActivitiesLimit=5",
+          "host": [
+            "{{server-url}}"
+          ],
+          "path": [
+            "reports",
+            "summary"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "2026-05-16T00:00:00Z"
+            },
+            {
+              "key": "to",
+              "value": "2026-06-15T23:59:59Z"
+            },
+            {
+              "key": "topActivitiesLimit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/reports/summary?from=2026-05-16T00:00:00Z&to=2026-06-15T23:59:59Z&topActivitiesLimit=5",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "reports",
+                "summary"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "2026-05-16T00:00:00Z"
+                },
+                {
+                  "key": "to",
+                  "value": "2026-06-15T23:59:59Z"
+                },
+                {
+                  "key": "topActivitiesLimit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 15 Jun 2026 20:57:59 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"period\": {\n        \"from\": \"2026-05-16T00:00:00Z\",\n        \"to\": \"2026-06-15T23:59:59Z\",\n        \"timezone\": \"Z\"\n    },\n    \"overview\": {\n        \"totalSessions\": 2,\n        \"activeDays\": 2,\n        \"averageSessionsPerWeek\": 0.4,\n        \"mostFrequentCategory\": {\n            \"id\": 3,\n            \"name\": \"Resistencia\",\n            \"sessionCount\": 1\n        }\n    },\n    \"consistency\": {\n        \"currentStreakDays\": 0,\n        \"longestStreakDays\": 2,\n        \"sessionsByWeek\": [\n            {\n                \"week\": \"2026-W23\",\n                \"count\": 1\n            },\n            {\n                \"week\": \"2026-W24\",\n                \"count\": 1\n            }\n        ],\n        \"inactiveDays\": 29\n    },\n    \"categories\": {\n        \"totalSessionsWithActivities\": 2,\n        \"breakdown\": [\n            {\n                \"categoryId\": 3,\n                \"categoryName\": \"Resistencia\",\n                \"sessionCount\": 1,\n                \"percentage\": 50\n            },\n            {\n                \"categoryId\": 6,\n                \"categoryName\": \"Fuerza\",\n                \"sessionCount\": 1,\n                \"percentage\": 50\n            }\n        ]\n    },\n    \"activities\": {\n        \"top\": [\n            {\n                \"activityId\": 5,\n                \"activityName\": \"Levantar pesas de 20kg\",\n                \"categoryName\": \"Resistencia\",\n                \"occurrences\": 1\n            },\n            {\n                \"activityId\": 7,\n                \"activityName\": \"Levantar peso muerto\",\n                \"categoryName\": \"Fuerza\",\n                \"occurrences\": 1\n            }\n        ],\n        \"uniqueActivitiesCount\": 2\n    },\n    \"goals\": {\n        \"activeCount\": 0,\n        \"expiredCount\": 2,\n        \"withoutProgressCount\": 2,\n        \"items\": []\n    }\n}"
+        }
+      ]
+    }
+  ]
+}

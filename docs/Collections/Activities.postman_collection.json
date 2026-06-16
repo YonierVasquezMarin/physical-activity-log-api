@@ -1,0 +1,101 @@
+{
+  "info": {
+    "_postman_id": "9b56c751-6af0-42ba-935b-a9e23d1af8f6",
+    "name": "Activities",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26305473"
+  },
+  "item": [
+    {
+      "name": "Register an activity",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"categoryId\": 1,\r\n    \"name\": \"Correr 5 km\",\r\n    \"description\": \"Trote continuo en parque\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{server-url}}/activities",
+          "host": [
+            "{{server-url}}"
+          ],
+          "path": [
+            "activities"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"categoryId\": 1,\r\n    \"name\": \"Correr 5 km\",\r\n    \"description\": \"Trote continuo en parque\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/activities",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "activities"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 03 Jun 2026 02:22:27 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 4,\n    \"categoryId\": 1,\n    \"name\": \"Correr 5 km\",\n    \"description\": \"Trote continuo en parque\"\n}"
+        }
+      ]
+    }
+  ]
+}
